@@ -8,7 +8,8 @@ Node.js와 Express를 활용하여 마크다운 파일로부터 공지사항을 
 - 🎨 **일관된 디자인**: main-ko.html의 디자인 스타일 적용
 - 🔄 **자동 변환**: 마크다운을 HTML로 자동 변환
 - 📊 **메타데이터 지원**: Front Matter로 제목, 날짜, 우선순위 등 관리
-- 🚀 **실시간 업데이트**: 마크다운 파일 추가/수정 시 자동 반영
+- 🚀 **정적 페이지 생성**: 빠른 로딩을 위한 정적 HTML 생성
+- 🔔 **스마트 알림**: 메인 페이지에서 중요 공지 자동 팝업
 
 ## 설치 방법
 
@@ -16,13 +17,16 @@ Node.js와 Express를 활용하여 마크다운 파일로부터 공지사항을 
 # 의존성 패키지 설치
 npm install
 
-# Tailwind CSS 빌드
-npm run build:css
+# Tailwind CSS 빌드 및 정적 페이지 생성
+npm run build
 ```
 
 ## 실행 방법
 
 ```bash
+# 정적 페이지 빌드 (CSS + HTML)
+npm run build
+
 # 서버 시작 (CSS 자동 빌드 포함)
 npm start
 
@@ -32,28 +36,43 @@ npm run dev
 # Tailwind CSS만 빌드
 npm run build:css
 
+# 정적 HTML만 생성
+npm run build:static
+
 # Tailwind CSS 실시간 감시 모드
 npm run watch:css
 ```
 
 서버가 실행되면 브라우저에서 `http://localhost:3000`으로 접속하세요.
 
+### 정적 페이지 배포
+
+`npm run build` 실행 후 `dist/` 디렉토리의 파일들을 웹 서버에 배포하면 됩니다:
+
+- `dist/index.html` - 공지사항 페이지
+- `dist/tailwind.css` - 스타일시트
+- `dist/notices.json` - API 데이터 (선택사항)
+
 ## 디렉토리 구조
 
 ```
 notice/
 ├── server.js              # Express 서버
-├── notice.html            # 공지사항 페이지 HTML
+├── build-static.js        # 정적 페이지 빌드 스크립트
+├── notice.html            # 공지사항 페이지 템플릿
+├── main-ko.html           # 메인 페이지 (팝업 포함)
 ├── package.json           # 프로젝트 설정
 ├── tailwind.config.js     # Tailwind CSS 설정
 ├── src/
 │   └── input.css          # Tailwind CSS 소스
-├── public/                # 정적 파일 (빌드된 CSS)
+├── public/                # 빌드된 CSS
 │   └── tailwind.css       # 빌드된 Tailwind CSS
+├── dist/                  # 정적 페이지 출력 (빌드 결과)
+│   ├── index.html         # 정적 공지사항 페이지
+│   ├── tailwind.css       # CSS 복사본
+│   └── notices.json       # API 데이터
 └── notices/               # 마크다운 공지사항 파일들
-    ├── 2025-10-29-maintenance.md
-    ├── 2025-10-25-new-mirror.md
-    └── 2025-10-20-welcome.md
+    └── 2025-10-29-notice-page-launch.md
 ```
 
 ## 공지사항 작성 방법

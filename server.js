@@ -99,17 +99,6 @@ app.get('/', async (req, res) => {
   }
 });
 
-// main-ko.html 페이지 제공
-app.get('/main', async (req, res) => {
-  try {
-    const htmlPath = path.join(__dirname, 'main-ko.html');
-    const html = await fs.readFile(htmlPath, 'utf-8');
-    res.send(html);
-  } catch (error) {
-    res.status(500).send('페이지를 불러오는데 실패했습니다.');
-  }
-});
-
 // 서버 시작
 app.listen(PORT, () => {
   console.log(`공지사항 서버가 http://localhost:${PORT} 에서 실행 중입니다.`);

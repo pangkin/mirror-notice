@@ -5,6 +5,8 @@
   "main": "server.js",
   "scripts": {
     "build:css": "npx tailwindcss -i ./src/input.css -o ./public/tailwind.css --minify",
+    "build:static": "node build-static.js",
+    "build": "npm run build:css && npm run build:static",
     "watch:css": "npx tailwindcss -i ./src/input.css -o ./public/tailwind.css --watch",
     "start": "npm run build:css && node server.js",
     "dev": "npm run build:css && nodemon server.js"

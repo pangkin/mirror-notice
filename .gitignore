@@ -4,9 +4,7 @@ package-lock.json
 
 # Build output
 public/
-
-# notice
-notices/
+dist/
 
 # Logs
 logs
