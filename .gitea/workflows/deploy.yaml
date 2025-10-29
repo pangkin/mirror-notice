@@ -1,0 +1,34 @@
+name: Deploy by Pulling on Server
+
+on:
+  push:
+    branches: ['main']
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to server
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            echo "🔃 Directory change."
+            cd ${{ secrets.WORK_DIR }}
+
+            echo "🏃 Git pull start."
+            git pull origin main
+            echo "🏃 Git pull finished."
+
+            echo "🏃 NPM install start."
+            npm install
+            echo "🏃 NPM install finished."
+
+            echo "🏃 NPM build start."
+            npm build
+            echo "🏃 NPM build finished."
+
+            echo "👍 Task finished."
