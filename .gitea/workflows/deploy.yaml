@@ -28,7 +28,7 @@ jobs:
             echo "🏃 NPM install finished."
 
             echo "🏃 NPM build start."
-            npm build
+            npm run build
             echo "🏃 NPM build finished."
 
             echo "👍 Task finished."
