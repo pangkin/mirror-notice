@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8" />
+  <link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect" />
+  <link rel="stylesheet" as="style" crossorigin
+    href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <title>공지사항 - Pangkin Mirror</title>
+  <link href="data:image/x-icon;base64," rel="icon" type="image/x-icon" />
+  <link href="https://http.krfoss.org/.web/http.css" rel="stylesheet" />
+  <link href="/tailwind.css" rel="stylesheet" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <style>
+    .notice-content {
+      line-height: 1.8;
+    }
+
+    .notice-content h1 {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: #1e293b;
+    }
+
+    .notice-content h2 {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+      color: #334155;
+    }
+
+    .notice-content h3 {
+      font-size: 1.25rem;
+      font-weight: bold;
+      margin-top: 1.25rem;
+      margin-bottom: 0.5rem;
+      color: #475569;
+    }
+
+    .notice-content p {
+      margin-bottom: 1rem;
+      color: #475569;
+    }
+
+    .notice-content ul,
+    .notice-content ol {
+      margin-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .notice-content li {
+      margin-bottom: 0.5rem;
+      color: #475569;
+    }
+
+    .notice-content ul li {
+      list-style-type: disc;
+    }
+
+    .notice-content ol li {
+      list-style-type: decimal;
+    }
+
+    .notice-content code {
+      background-color: #f1f5f9;
+      padding: 0.125rem 0.375rem;
+      border-radius: 0.25rem;
+      font-family: 'Courier New', monospace;
+      font-size: 0.875rem;
+    }
+
+    .notice-content pre {
+      background-color: #1e293b;
+      color: #e2e8f0;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      overflow-x: auto;
+      margin-bottom: 1rem;
+    }
+
+    .notice-content pre code {
+      background-color: transparent;
+      padding: 0;
+      color: #e2e8f0;
+    }
+
+    .notice-content blockquote {
+      border-left: 4px solid #3b82f6;
+      padding-left: 1rem;
+      margin-left: 0;
+      margin-bottom: 1rem;
+      color: #64748b;
+      font-style: italic;
+    }
+
+    .notice-content a {
+      color: #3b82f6;
+      text-decoration: underline;
+    }
+
+    .notice-content a:hover {
+      color: #2563eb;
+    }
+
+    .notice-card {
+      transition: all 0.2s ease-in-out;
+    }
+
+    .notice-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+    }
+
+    .priority-badge-high {
+      background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+      color: white;
+    }
+
+    .priority-badge-normal {
+      background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+      color: white;
+    }
+
+    .priority-badge-low {
+      background: linear-gradient(135deg, #94a3b8 0%, #64748b 100%);
+      color: white;
+    }
+
+    .status-badge-scheduled {
+      background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+      color: white;
+    }
+
+    .status-badge-ongoing {
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      color: white;
+      animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    .status-badge-completed {
+      background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%);
+      color: white;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0.7;
+      }
+    }
+  </style>
+</head>
+
+<body class="bg-white">
+  <div class="relative flex size-full min-h-screen flex-col bg-white group/design-root overflow-x-hidden"
+    style='font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;'>
+    <div class="layout-container flex h-full grow flex-col">
+      <header class="border-b border-solid border-gray-200 py-4">
+        <div class="mx-auto flex max-w-7xl items-center justify-between whitespace-nowrap px-4 sm:px-6 lg:px-8">
+          <a href="/">
+            <div class="flex items-center gap-4 text-gray-900">
+              <div class="size-8">
+                <img alt="Pangkin 미러 로고" class="h-full w-full" src="https://mirror.pangkin.com/asset/logo.png" />
+              </div>
+              <h2 class="text-gray-900 text-xl font-extrabold leading-tight tracking-[-0.015em]">Pangkin Mirror</h2>
+            </div>
+          </a>
+          <div class="flex items-center gap-4">
+            <a href="/" class="text-sm font-medium text-gray-500 hover:text-gray-900">홈</a>
+            <a href="/en" class="text-sm font-medium text-gray-500 hover:text-gray-900">English</a>
+          </div>
+        </div>
+      </header>
+
+      <main class="flex-1">
+        <section class="relative py-16 md:py-20 overflow-hidden"
+          style="background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);">
+          <!-- 장식 요소 -->
+          <div class="absolute inset-0 opacity-30">
+            <div
+              style="position: absolute; top: 10%; left: 10%; width: 300px; height: 300px; background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%); border-radius: 50%;">
+            </div>
+            <div
+              style="position: absolute; bottom: 10%; right: 10%; width: 400px; height: 400px; background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%); border-radius: 50%;">
+            </div>
+          </div>
+
+          <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
+            <!-- 배지 -->
+            <div
+              class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 backdrop-blur-sm border border-gray-200 shadow-sm mb-8">
+              <span class="material-icons text-blue-600" style="font-size: 20px;">campaign</span>
+              <span class="text-sm font-medium text-gray-700">공지사항</span>
+            </div>
+
+            <h1 class="text-gray-900 text-5xl md:text-6xl font-extrabold leading-tight tracking-tight">
+              <span
+                style="background: linear-gradient(135deg, #1e293b 0%, #475569 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">공지사항</span>
+            </h1>
+
+            <p class="mt-8 max-w-2xl mx-auto text-xl md:text-2xl text-gray-600 leading-relaxed">
+              Pangkin Mirror의<br class="hidden sm:block" />
+              <span class="font-semibold text-gray-800">최신 소식과 업데이트</span>를 확인하세요
+            </p>
+          </div>
+        </section>
+
+        <section class="py-16 sm:py-24 bg-white">
+          <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+            <div id="notices-container">
+              <div class="text-center py-12">
+                <span class="text-gray-400">공지사항을 불러오는 중...</span>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="border-t border-gray-200 py-8">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="text-center">
+            <p class="text-sm text-gray-500">
+              © 2025 Pangkin Mirror. All rights reserved.
+            </p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <script>
+    // 공지사항 목록을 가져와서 렌더링
+    async function loadNotices() {
+      try {
+        const response = await fetch('/api/notices');
+        const notices = await response.json();
+
+        const container = document.getElementById('notices-container');
+
+        if (notices.length === 0) {
+          container.innerHTML = `
+            <div class="text-center py-12">
+              <span class="text-gray-400">등록된 공지사항이 없습니다.</span>
+            </div>
+          `;
+          return;
+        }
+
+        const priorityLabels = {
+          high: '중요',
+          normal: '일반',
+          low: '참고'
+        };
+
+        const priorityBadgeClass = {
+          high: 'priority-badge-high',
+          normal: 'priority-badge-normal',
+          low: 'priority-badge-low'
+        };
+
+        const statusLabels = {
+          scheduled: '예정',
+          ongoing: '진행 중',
+          completed: '완료'
+        };
+
+        const statusBadgeClass = {
+          scheduled: 'status-badge-scheduled',
+          ongoing: 'status-badge-ongoing',
+          completed: 'status-badge-completed'
+        };
+
+        container.innerHTML = notices.map(notice => {
+          const date = new Date(notice.date);
+          const formattedDate = date.toLocaleDateString('ko-KR', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+          });
+
+          return `
+            <div class="notice-card mb-8 rounded-xl border border-gray-200 bg-white overflow-hidden">
+              <div class="p-6 sm:p-8">
+                <div class="flex items-start justify-between gap-4 mb-4">
+                  <div class="flex-1">
+                    <div class="flex items-center gap-3 mb-2 flex-wrap">
+                      <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold ${priorityBadgeClass[notice.priority]}">
+                        ${priorityLabels[notice.priority]}
+                      </span>
+                      <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold ${statusBadgeClass[notice.status]}">
+                        ${statusLabels[notice.status]}
+                      </span>
+                      <span class="text-sm text-gray-500">${formattedDate}</span>
+                    </div>
+                    <h2 class="text-2xl font-bold text-gray-900 mb-2">${notice.title}</h2>
+                    <div class="flex items-center gap-2 text-sm text-gray-500">
+                      <span class="material-icons" style="font-size: 16px;">person</span>
+                      <span>${notice.author}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="notice-content prose max-w-none">
+                  ${notice.content}
+                </div>
+              </div>
+            </div>
+          `;
+        }).join('');
+      } catch (error) {
+        console.error('공지사항을 불러오는데 실패했습니다:', error);
+        document.getElementById('notices-container').innerHTML = `
+          <div class="text-center py-12">
+            <span class="text-red-500">공지사항을 불러오는데 실패했습니다.</span>
+          </div>
+        `;
+      }
+    }
+
+    // 페이지 로드 시 공지사항 불러오기
+    document.addEventListener('DOMContentLoaded', loadNotices);
+  </script>
+</body>
+
+</html>
