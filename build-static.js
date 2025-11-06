@@ -127,14 +127,7 @@ async function generateHTML(notices) {
       /<div id="notices-container">[\s\S]*?<\/div>/,
       `<div id="notices-container">${noticesHTML}</div>`
     )
-    .replace(
-      /<script>[\s\S]*?<\/script>\s*<\/body>/,
-      `<script>
-    // 정적 페이지 - 공지사항이 미리 렌더링되어 있습니다.
-    console.log('정적 공지사항 페이지가 로드되었습니다.');
-  </script>
-</body>`
-    );
+    .replace(/<script>[\s\S]*?<\/script>\s*<\/body>/, `</body>`);
 
   return staticHTML;
 }
